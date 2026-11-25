@@ -1,0 +1,78 @@
+{
+  "sites": [
+    {
+      "key": "nivii_ani",
+      "name": "Nivii番剧",
+      "type": 3,
+      "api": "assets://local-metadata/ani.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "番剧推荐聚合"
+    },
+    {
+      "key": "nivii_dmbus",
+      "name": "动漫巴士",
+      "type": 3,
+      "api": "assets://local-metadata/dmbus.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "番剧+动漫"
+    },
+    {
+      "key": "nivii_douban",
+      "name": "豆瓣推荐",
+      "type": 3,
+      "api": "assets://local-metadata/douban.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "豆瓣影视推荐"
+    },
+    {
+      "key": "nivii_fanshu",
+      "name": "番薯影视",
+      "type": 3,
+      "api": "assets://local-metadata/fanshu.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "综合影视"
+    },
+    {
+      "key": "nivii_jinpai",
+      "name": "金牌影视",
+      "type": 3,
+      "api": "assets://local-metadata/jinpai.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "综合影视"
+    },
+    {
+      "key": "nivii_manguo",
+      "name": "芒果动漫",
+      "type": 3,
+      "api": "assets://local-metadata/manguo.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "动漫为主"
+    }
+  ],
+  "lives": [],
+  "spider": "",
+  "wallpaper": "",
+  "sites_note": "内置源通过 assets:// 离线加载，不联网获取 js 本体",
+  "rules": [],
+  "ijk": [],
+  "doh": [],
+  "warning": "内置 Nivii 源：ani,dmbus,douban,fanshu,jinpai,manguo"
+}

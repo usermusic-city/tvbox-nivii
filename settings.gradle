@@ -1,0 +1,5 @@
+rootProject.name = "TVBox"
+include ':app'
+include ':player'
+include ':quickjs'
+// include ':pyramid'  // 已移除：chaquo python 插件依赖 Windows Python 3.8，本项目只用 js 源
