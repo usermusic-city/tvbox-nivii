@@ -869,8 +869,9 @@ public class ApiConfig {
         if(live_api_url.isEmpty() || apiUrl.equals(live_api_url)){
             LOG.i("echo-load-config_live");
             initLiveSettings();
-            if(infoJson.has("lives")){
+            if(infoJson.has("lives") && infoJson.get("lives").isJsonArray() && infoJson.getAsJsonArray("lives").size() > 0){
                 JsonArray lives_groups=infoJson.get("lives").getAsJsonArray();
+                // 破茧定制：lives 为空数组时直接跳过，否则下面 lives_groups.get(0) 会 IndexOutOfBounds
                 int live_group_index=getLiveGroupIndex();
                 if(live_group_index>lives_groups.size()-1)live_group_index=0;
                 Hawk.put(HawkConfig.LIVE_GROUP_LIST,lives_groups);
