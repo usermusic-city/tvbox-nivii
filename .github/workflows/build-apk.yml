@@ -32,6 +32,22 @@ jobs:
           find app/build/outputs/apk -name "*.apk" -exec cp -v {} out/ \;
           ls -lh out/
 
+      - name: Verify assets in APK
+        run: |
+          APK=$(find out -name "*.apk" | head -1)
+          echo "校验 $APK"
+          python3 - "$APK" <<'EOF'
+          import sys, zipfile
+          z = zipfile.ZipFile(sys.argv[1])
+          n = z.namelist()
+          meta = [x for x in n if x.startswith('assets/local-metadata/')]
+          nivii = [x for x in n if x.startswith('assets/js/nivii/')]
+          assert 'assets/nivii_local.json' in n, '缺 assets/nivii_local.json'
+          assert len(meta) >= 6, f'local-metadata 仅 {len(meta)} 个'
+          assert len(nivii) >= 6, f'js/nivii 仅 {len(nivii)} 个'
+          print(f'assets 校验通过：总条目 {len(n)}，nivii {len(nivii)}，local-metadata {len(meta)}')
+          EOF
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
