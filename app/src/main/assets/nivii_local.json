@@ -2,77 +2,123 @@
   "sites": [
     {
       "key": "nivii_ani",
-      "name": "Nivii番剧",
+      "name": "AniCh 动漫弹幕网",
       "type": 3,
-      "api": "assets://local-metadata/ani.js",
+      "api": "assets://js/nivii/ani.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "番剧推荐聚合"
+      "_note": "动漫番剧 / anich.sends.eu.org / 自带首页推荐+最近更新"
     },
     {
       "key": "nivii_dmbus",
       "name": "动漫巴士",
       "type": 3,
-      "api": "assets://local-metadata/dmbus.js",
+      "api": "assets://js/nivii/dmbus.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "番剧+动漫"
+      "_note": "动漫番剧 / dmbus.cc / 热血恋爱奇幻等题材分类"
     },
     {
       "key": "nivii_douban",
       "name": "豆瓣推荐",
       "type": 3,
-      "api": "assets://local-metadata/douban.js",
+      "api": "assets://js/nivii/douban.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "豆瓣影视推荐"
+      "_note": "影视榜单 / douban.com / 豆瓣榜单+分类浏览，非在线播放站"
     },
     {
       "key": "nivii_fanshu",
       "name": "番薯影视",
       "type": 3,
-      "api": "assets://local-metadata/fanshu.js",
+      "api": "assets://js/nivii/fanshu.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "综合影视"
+      "_note": "综合影视 / 番薯动漫系 / 接口带签名加密，体积最大"
+    },
+    {
+      "key": "nivii_guazi",
+      "name": "瓜子影视",
+      "type": 3,
+      "api": "assets://js/nivii/guazi.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "综合影视 / 域名随机轮换 / 日韩欧美港台分区"
+    },
+    {
+      "key": "nivii_jcy",
+      "name": "囧次元",
+      "type": 3,
+      "api": "assets://js/nivii/jcy.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "动漫番剧 / 官方站 jcyapp.cn / 后端 43.145.33.254:27990，内部全是 jiong* 函数，即原 jiong 源"
     },
     {
       "key": "nivii_jinpai",
       "name": "金牌影视",
       "type": 3,
-      "api": "assets://local-metadata/jinpai.js",
+      "api": "assets://js/nivii/jinpai.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "综合影视"
+      "_note": "综合影视 / m.9zhoukj.com 等多域名 / 日韩美大陆分区"
+    },
+    {
+      "key": "nivii_lmm85",
+      "name": "LMM85 动漫",
+      "type": 3,
+      "api": "assets://js/nivii/lmm85.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "动漫番剧 / lmm85.com / 日本国产欧美动漫+特摄，带验证页"
     },
     {
       "key": "nivii_manguo",
       "name": "芒果动漫",
       "type": 3,
-      "api": "assets://local-metadata/manguo.js",
+      "api": "assets://js/nivii/manguo.js",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
       "ext": "",
-      "_note": "动漫为主"
+      "_note": "综合影视 / 114.66.55.27:806 / 电影电视剧综艺纪录片全覆盖"
+    },
+    {
+      "key": "nivii_shizijs",
+      "name": "柿子影视",
+      "type": 3,
+      "api": "assets://js/nivii/shizijs.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "_note": "综合影视 / bkbfdm.hzhcbkj.cn / App 风格接口 /app/video/*，分类从后端动态取"
     }
   ],
   "lives": [],
+  "parses": [],
+  "flags": ["youku", "qq", "iqiyi", "qiyi", "letv", "sohu", "tudou", "pptv", "mgtv", "wasu", "bilibili"],
   "spider": "",
   "wallpaper": "",
-  "sites_note": "内置源通过 assets:// 离线加载，不联网获取 js 本体",
   "rules": [],
   "ijk": [],
   "doh": [],
-  "warning": "内置 Nivii 源：ani,dmbus,douban,fanshu,jinpai,manguo"
+  "sites_note": "内置源通过 assets:// 离线加载，不联网获取 js 本体；api 以 .js 结尾即走 JsLoader",
+  "warning": "共 10 个内置 Nivii 源：ani(Nivii番剧), dmbus(动漫巴士), douban(豆瓣推荐), fanshu(番薯影视), guazi(瓜子影视), jcy(囧次元), jinpai(金牌影视), lmm85(LMM85动漫), manguo(芒果动漫), shizijs(柿子影视)"
 }

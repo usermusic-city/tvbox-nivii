@@ -187,9 +187,42 @@ public class ApiConfig {
         }
         return configUrl;
     }
+    /**
+     * 破茧定制：APK 内置源清单。
+     * 未设置订阅地址（HawkConfig.API_URL 为空）时自动加载该内置配置，
+     * 让 App 首次安装即可直接使用内置的 Nivii 源，不需要手动导入订阅。
+     * 用户自行填写订阅地址后，内置配置仅作为回退。
+     */
+    public static final String BUILTIN_CONFIG_ASSET = "nivii_local.json";
+    public static final String BUILTIN_CONFIG_URL = "assets://" + BUILTIN_CONFIG_ASSET;
+
+    /** 读取 APK assets 中的内置配置文本，失败返回空串 */
+    public static String loadBuiltinConfig() {
+        try {
+            String json = FileUtils.getAsOpen(BUILTIN_CONFIG_ASSET);
+            return TextUtils.isEmpty(json) ? "" : json;
+        } catch (Throwable th) {
+            th.printStackTrace();
+            return "";
+        }
+    }
+
     public void loadConfig(boolean useCache, LoadConfigCallback callback, Activity activity) {
         String apiUrl = Hawk.get(HawkConfig.API_URL, "");
         if (apiUrl.isEmpty()) {
+            // 破茧定制：无订阅地址时回退到 APK 内置源清单
+            String builtin = loadBuiltinConfig();
+            if (!TextUtils.isEmpty(builtin)) {
+                LOG.i("echo-load builtin config: " + BUILTIN_CONFIG_URL);
+                try {
+                    parseJson(BUILTIN_CONFIG_URL, builtin);
+                    callback.success();
+                } catch (Throwable th) {
+                    th.printStackTrace();
+                    callback.error("内置配置解析失败");
+                }
+                return;
+            }
             callback.error("-1");
             return;
         }
@@ -244,6 +277,18 @@ public class ApiConfig {
                         }
                         clearApiLinesIfUnmatched(apiUrl);
                         parseJson(apiUrl, json);
+                        callback.success();
+                        return;
+                    } catch (Throwable th) {
+                        th.printStackTrace();
+                    }
+                }
+                // 破茧定制：订阅拉取失败且本地无缓存时，回退到 APK 内置源清单
+                String builtin = loadBuiltinConfig();
+                if (!TextUtils.isEmpty(builtin)) {
+                    LOG.i("echo-subscribe failed, fallback to builtin config");
+                    try {
+                        parseJson(BUILTIN_CONFIG_URL, builtin);
                         callback.success();
                         return;
                     } catch (Throwable th) {
