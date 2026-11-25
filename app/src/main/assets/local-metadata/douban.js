@@ -380,3 +380,15 @@ category: __auv_category,
 detail: __auv_detail,
 search: __auv_search};
 })();
+
+/* ===== 破茧定制：TVBox JS 模块导出 =====
+ * 上面的适配层只把接口挂在 globalThis.__niviiSource 上，
+ * 而 TVBox 的 JsSpider 只认 export default 或 __jsEvalReturn()。
+ * 这里补上标准导出，内部逻辑不做任何改动。 */
+export function __jsEvalReturn() {
+    if (globalThis.__niviiSource) return globalThis.__niviiSource;
+    return null;
+}
+export default function () {
+    return __jsEvalReturn();
+}
